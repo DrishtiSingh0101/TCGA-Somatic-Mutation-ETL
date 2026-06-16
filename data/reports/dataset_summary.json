@@ -1,0 +1,62 @@
+{
+    "data_info": {
+        "num_records": 1676,
+        "num_samples": 3,
+        "num_genes": 1519,
+        "mut_type": 2,
+        "mut_type_count": {
+            "SNV": 1645,
+            "INDEL": 32
+        }
+    },
+    "mut_per_cancer": {
+        "BRCA": 48,
+        "COAD": 1371,
+        "LUAD": 258
+    },
+    "top_mutated_genes": {
+        "TTN": 8,
+        "MUC5B": 4,
+        "ATP13A1": 3,
+        "POU3F4": 3,
+        "MYO15A": 3,
+        "NPHP4": 3,
+        "BCOR": 3,
+        "ADGRV1": 3,
+        "CSMD1": 3,
+        "KLKB1": 3,
+        "ABCA7": 3,
+        "COL6A3": 3,
+        "ACE": 3,
+        "GOLGB1": 3,
+        "MYO16": 2,
+        "DDC": 2,
+        "SLC22A17": 2,
+        "INTS1": 2,
+        "KIF1C": 2,
+        "ZNF99": 2
+    },
+    "top_mutated_genes_cancer": {
+        "BRCA": {
+            "PRAMEF7": 1,
+            "PRAMEF14": 1,
+            "RCE1": 1,
+            "KLHL35": 1,
+            "PRCP": 1
+        },
+        "COAD": {
+            "TTN": 6,
+            "MUC5B": 4,
+            "GOLGB1": 3,
+            "ATP13A1": 3,
+            "KLKB1": 3
+        },
+        "LUAD": {
+            "POU3F4": 3,
+            "TAF1L": 2,
+            "TTN": 2,
+            "REG3G": 2,
+            "RAB11FIP5": 2
+        }
+    }
+}

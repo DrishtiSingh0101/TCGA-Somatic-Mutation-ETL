@@ -1,0 +1,181 @@
+Step 1: Define Deliverables
+
+First create your project structure.
+
+Create:
+
+Cancer-Mutation-Intelligence-Platform/
+│
+├── data/
+│   ├── raw/
+│   ├── processed/
+│   └── reports/
+│
+├── src/
+│   ├── extract.py
+│   ├── transform.py
+│   ├── quality_check.py
+│   ├── load.py
+│   └── analysis.py
+│
+├── notebooks/
+│
+├── sql/
+│
+├── dashboard/
+│
+├── requirements.txt
+│
+├── README.md
+│
+└── .gitignore
+
+Create Project Structure Automatically
+
+Create a file:
+
+# create_project_structure.py
+
+Step 2: Extract TCGA Somatic Mutation Data
+
+Now let's build the first ETL component.
+
+Understanding TCGA
+
+TCGA data is hosted by:
+
+National Cancer Institute's GDC Portal.
+
+We will use:
+
+https://api.gdc.cancer.gov
+
+The API is free.
+
+No login required.
+
+What Data Are We Extracting?
+
+For each cancer type:
+
+1. BRCA
+
+2. LUAD
+
+3. COAD
+
+we want:
+
+| Column                 | Meaning                |
+| ---------------------- | ---------------------- |
+| case_id                | Patient ID             |
+| gene                   | Gene Name              |
+| chromosome             | Chromosome             |
+| start_position         | Variant Position       |
+| variant_classification | Missense, Nonsense etc |
+| reference_allele       | REF                    |
+| tumor_allele           | ALT                    |
+
+Required Packages
+
+Install:
+
+pip install requests pandas tqdm
+
+create requirements.txt
+
+First Extraction Script
+
+Create:
+
+# src/extract.py
+
+What This Script Does
+
+It DOES NOT download mutation data yet.
+
+It first teaches an important ETL concept:
+
+Extract Metadata
+
+We ask GDC:
+Show me all MAF files
+for TCGA-BRCA
+
+GDC returns:
+
+{
+  "file_id": "...",
+  "file_name": "...",
+  "file_size": ...
+}
+
+This is the "inventory" step.
+
+Most ETL pipelines do this first.
+
+Varify extraction
+
+
+Why This Is Better Than Downloading First
+
+Most beginners:
+
+Download huge files
+↓
+Figure out what they are
+
+Real ETL:
+
+Discover metadata
+↓
+Validate metadata
+↓
+Download selected files
+↓
+Transform
+↓
+Load
+
+
+Step 3: Download MAF Files
+
+Your metadata files contain information about available MAF files.
+
+The GDC API allows downloading files using their file_id.
+
+---- Inspect Metadata
+---- BASE_URL = "https://api.gdc.cancer.gov/data/"
+NOTE: Filter only open access files.
+	"field": "access"
+        "value": "open"
+
+Step 4: Transform Module
+
+Transformations:
+
+1. Standardize gene names (TP53 or tp53 or Tp53 --> TP53)
+2. Remove duplicates
+3. Create features -mutation_type
+4. Create VAF category (if VAF is available)
+5. Create cancer type column
+
+
+Step 5: Data Quality Checks
+
+1. Missing values
+2. Duplicate variants
+3. Invalid chromosome
+4. Invalid gene names
+
+Step 6: Load Data
+
+Step 7: SQL Analysis
+
+Step 8: Data Science Component
+
+Step 9: Visualization
+
+Step 10: Dockerize
+
+Step 11: GitHub
