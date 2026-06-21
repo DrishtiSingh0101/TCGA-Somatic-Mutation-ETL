@@ -114,9 +114,11 @@ Queried the GDC API to identify available somatic mutation (MAF) files for selec
 
 Generated metadata files:
 
-* TCGA-BRCA_maf_metadata.json
-* TCGA-LUAD_maf_metadata.json
-* TCGA-COAD_maf_metadata.json
+* TCGA-LUAD_d79c2668-6f1e-4736-ac9e-08e7fa58321d.wxs.aliquot_ensemble_masked.maf.gz
+* TCGA-BRCA_01d89297-2636-4115-bfcf-993e9523401e.wxs.aliquot_ensemble_masked.maf.gz
+* TCGA-COAD_7c3b8f64-0ae8-4428-847e-f10962133716.wxs.aliquot_ensemble_masked.maf.gz
+
+Note: added TCGA-LUAD, TCGA-COAD, TCGA-BRCA in the file names to create cancer_type column in processed file.
 
 ---
 
@@ -141,6 +143,8 @@ Retained relevant columns:
 * Alternate allele
 * Variant classification
 * Sample ID
+* cancer_type
+* mutation_type
 
 #### Standardization
 
@@ -218,6 +222,8 @@ dataset_summary.json
 * JSON
 * SciPy
 * pathlib
+* SQLAlchemy
+* PostgreQSL
 
 ### Data Engineering
 
@@ -240,8 +246,6 @@ dataset_summary.json
 
 ---
 
-## Future Work
-
 ### Database Integration
 
 * Load processed mutation data into PostgreSQL using SQLAlchemy.
@@ -253,16 +257,21 @@ Apply statistical methods including:
 
 * Chi-square test
 * ANOVA
+* Tukey's HSD(Honestly Significant Difference)
 * Fisher's exact test
 * Mutation burden analysis
-
+  
 ### Data Visualization
 
 Develop interactive visualizations for:
 
+* Sample distribution in each cancer type
 * Mutation distributions
-* Top mutated genes
+* Top mutated genes (Using mutation count)
+* Frequently mutated genes in each cancer (using mutation frequency)
 * Cancer-specific mutation landscapes
+
+## Future Work
 
 ### Dashboard Development
 
