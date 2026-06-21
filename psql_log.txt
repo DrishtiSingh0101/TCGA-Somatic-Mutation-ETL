@@ -1,0 +1,188 @@
+conda create -n psql
+conda activate psql
+conda install -c conda-forge postgresql
+
+Step 1: Verify installation
+
+Which psql
+which initdb
+which pg_ctl
+psql --version
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /home/d01011996/postgres_data -l logfile start
+
+Step 2: Initialize PostgreSQL data directory
+
+mkdir -p ~/progres_data
+Initialize:
+initdb -D ~/postgres_data
+
+	This creates:
+
+	~/postgres_data/
+    	base/
+    	global/
+    	pg_wal/
+    	postgresql.conf
+    	pg_hba.conf
+
+Step 3: Start PostgreSQL server
+
+pg_ctl -D ~/postgres_data -l logfile start
+	waiting for server to start.... done
+	server started
+
+Check status:
+
+pg_ctl -D ~/postgres_data status
+	pg_ctl: server is running (PID: 8821)
+	/home/d01011996/miniconda3/envs/psql/bin/postgres "-D" "/home/d01011996/postgres_data"
+
+Step 4: Connect using psql or or explicitly:
+
+psql postgres OR psql -d postgres
+	You should get:
+
+	postgres=#
+
+Exit:
+\q
+
+Step 5: Create your ETL database
+
+create database cancerdb;
+	CREATE DATABASE
+list databases:
+postgres=#\l
+
+Connect to database:
+
+postgres=# \c cancerdb
+You are now connected to database "cancerdb" as user "d01011996".
+
+If desired:
+
+cancerdb=# CREATE USER drishti WITH PASSWORD 'progresql1stpw';
+CREATE ROLE
+
+cancerdb=# GRANT ALL PRIVILEGES ON DATABASE cancerdb TO drishti;
+GRANT
+
+Step 7: Test Python connection
+
+exit - \q
+
+Install necessory packages in psql environment:
+
+conda install python=3.12
+
+pip install sqlalchemy psycopg2-binary pandas
+OR 
+conda install -c conda-forge sqlalchemy psycopg2 pandas
+
+varify installations:
+python -c "import sqlalchemy; print(sqlalchemy.__version__)"
+
+Step 4: Run your test script
+
+Next Step: Load your mutation data into PostgreSQL
+
+	#If permission denied comes for table creation that means the new used created doesn't have schema permissions. Above it was only granted database creation permission:
+In that case:
+
+psql -d cancerdb
+psql (18.4)
+Type "help" for help.
+
+cancerdb=# SELECT current_user;
+ current_user
+--------------
+ d01011996
+(1 row)
+	# this mean drishti is current  progresql owner, The error indicates that drishti lacks CREATE privileges on the public schema.
+
+	# GRANT ALL PRIVILEGES ON DATABASE cancerdb TO drishti;
+	# only grants database-level privileges.In PostgreSQL, schema permissions are separate.
+
+
+cancerdb=# GRANT ALL ON SCHEMA public To drishti;
+GRANT
+cancerdb=# \dn+
+
+
+Verify data loading
+
+Open PostgreSQL:
+psql -d cancerdb
+List tables:
+\dt
+
+            List of tables
+ Schema |   Name    | Type  |  Owner
+--------+-----------+-------+---------
+ public | mutations | table | drishti
+
+
+Inspect columns:
+\d mutations
+
+Count rows:
+SELECT COUNT(*) FROM mutations;
+
+Preview data:
+SELECT * FROM mutations LIMIT 5;
+
+Data Analytics:
+
+Phase 1: Descriptive Analytics
+What does the dataset look like?
+Question 1: How many mutations are present in each cancer?
+
+SELECT cancer_type, COUNT(*) AS mutation_count FROM mutations GROUP BY cancer_type ORDER BY mutation_count DESC;
+
+Question 2: What are the most frequently mutated genes?
+
+SELECT gene, COUNT(*) AS g_mut_count FROM mutations GROUP BY gene ORDER BY g_mut_count desc LIMIT 20;
+
+Question 3: What proportion of mutations are SNVs vs INDELs?
+
+cancerdb=# SELECT MUTATION_TYPE, COUNT(*) AS COUNT FROM MUTATIONS GROUP BY MUTATION_TYPE;
+
+Question 4: What proportion of mutations are SNVs vs INDELs in each cancer type?
+
+SELECT CANCER_TYPE, MUTATION_TYPE, COUNT(*) AS COUNT FROM MUTATIONS  GROUP BY CANCER_TYPE, MUTATION_TYPE;
+
+Question 5: Which mutation classifications are most common?
+
+SELECT VARIANT_CLASSIFICATION, COUNT(*) AS COUNT FROM MUTATIONS GROUP BY VARIANT_CLASSIFICATION ORDER BY COUNT DESC;
+
+Phase 2: Sample-Level Analytics
+
+Question 5: What is mutation burden per sample?
+
+
+SELECT SAMPLE_ID, COUNT(MUTATION_TYPE) AS MUT_COUNTS FROM MUTATIONS GROUP BY SAMPLE_ID ORDER BY MUT_COUNTS DESC;
+
+MUTATION_TYPE COUNTS PER SAMPLE: 
+
+SELECT SAMPLE_ID, MUTATION_TYPE, COUNT(MUTATION_TYPE) AS MUT_COUNTS FROM MUTATIONS GROUP BY SAMPLE_ID, MUTATION_TYPE;
+or
+SELECT SAMPLE_ID, MUTATION_TYPE, COUNT(MUTATION_TYPE) AS MUT_COUNTS FROM MUTATIONS GROUP BY SAMPLE_ID, MUTATION_TYPE ORDER BY MUT_COUNTS DESC;
+
+What chatgpt suggested:
+
+What is mutation burden per sample?
+
+SELECT SAMPLE_ID, CANCER_TYPE, COUNT(*) AS MUT_BURDEN FROM MUTATIONS GROUP BY SAMPLE_ID, CANCER_TYPE;
+
+Phase 3: Statistical Analysis
+
+Are the observed differences significant?
+
+Chi-square TesT
+Is TP53 mutation associated with cancer type?
+
+
+

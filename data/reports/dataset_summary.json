@@ -1,62 +1,67 @@
 {
     "data_info": {
-        "num_records": 1676,
-        "num_samples": 3,
-        "num_genes": 1519,
+        "num_records": 48076,
+        "num_samples": 149,
+        "num_genes": 14141,
         "mut_type": 2,
         "mut_type_count": {
-            "SNV": 1645,
-            "INDEL": 32
+            "SNV": 47530,
+            "INDEL": 546
         }
     },
     "mut_per_cancer": {
-        "BRCA": 48,
-        "COAD": 1371,
-        "LUAD": 258
+        "BRCA": 2390,
+        "COAD": 30452,
+        "LUAD": 15234
     },
     "top_mutated_genes": {
-        "TTN": 8,
-        "MUC5B": 4,
-        "ATP13A1": 3,
-        "POU3F4": 3,
-        "MYO15A": 3,
-        "NPHP4": 3,
-        "BCOR": 3,
-        "ADGRV1": 3,
-        "CSMD1": 3,
-        "KLKB1": 3,
-        "ABCA7": 3,
-        "COL6A3": 3,
-        "ACE": 3,
-        "GOLGB1": 3,
-        "MYO16": 2,
-        "DDC": 2,
-        "SLC22A17": 2,
-        "INTS1": 2,
-        "KIF1C": 2,
-        "ZNF99": 2
+        "TTN": 213,
+        "MUC16": 86,
+        "RYR2": 72,
+        "TP53": 67,
+        "SYNE1": 66,
+        "APC": 59,
+        "CSMD3": 56,
+        "DST": 55,
+        "LRP1B": 50,
+        "ZFHX4": 49,
+        "FAT4": 47,
+        "USH2A": 46,
+        "RYR3": 44,
+        "PIK3CA": 44,
+        "XIRP2": 38,
+        "DNAH8": 37,
+        "PCLO": 36,
+        "FAT3": 36,
+        "DNAH11": 35,
+        "CACNA1E": 35
     },
     "top_mutated_genes_cancer": {
         "BRCA": {
-            "PRAMEF7": 1,
-            "PRAMEF14": 1,
-            "RCE1": 1,
-            "KLHL35": 1,
-            "PRCP": 1
+            "PIK3CA": 18,
+            "TP53": 15,
+            "TTN": 11,
+            "MAP3K1": 9,
+            "GATA3": 8
         },
         "COAD": {
-            "TTN": 6,
-            "MUC5B": 4,
-            "GOLGB1": 3,
-            "ATP13A1": 3,
-            "KLKB1": 3
+            "TTN": 137,
+            "APC": 55,
+            "MUC16": 50,
+            "SYNE1": 48,
+            "DST": 36
         },
         "LUAD": {
-            "POU3F4": 3,
-            "TAF1L": 2,
-            "TTN": 2,
-            "REG3G": 2,
-            "RAB11FIP5": 2
+            "TTN": 65,
+            "RYR2": 41,
+            "CSMD3": 35,
+            "MUC16": 34,
+            "USH2A": 34
         }
+    },
+    "unique_samples_per_cancer": {
+        "BRCA": 49,
+        "COAD": 50,
+        "LUAD": 50
     }
 }

@@ -10,7 +10,7 @@ report = {}
 
 # dataset statistics
 report["data_info"] = {
-			"num_records": int(len(mut_data_dedup) - 1),
+			"num_records": int(len(mut_data_dedup)),
 			"num_samples": int(mut_data_dedup["sample_id"].nunique()),
 			"num_genes": int(mut_data_dedup["gene"].nunique()),
 			"mut_type":  int(mut_data_dedup["mutation_type"].nunique()),
@@ -46,6 +46,13 @@ for cancer, group in mut_data_dedup.groupby("cancer_type"):
 
     report["top_mutated_genes_cancer"][cancer] = top_genes
 
+sample_summary = (
+    mut_data.groupby("cancer_type")["sample_id"]
+      .nunique()
+      .to_dict()
+)
+
+report["unique_samples_per_cancer"] = sample_summary
 
 output_file = "data/reports/dataset_summary.json"
 
@@ -56,3 +63,4 @@ with open(output_file, "w") as f:
 		indent = 4
 )
 print(f"datasummary saved to {output_file})")
+

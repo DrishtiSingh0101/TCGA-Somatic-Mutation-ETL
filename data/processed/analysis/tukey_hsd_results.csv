@@ -1,0 +1,4 @@
+group1,group2,meandiff,p-adj,lower,upper,reject
+BRCA,COAD,560.2645,0.0006,213.0158,907.5132,True
+BRCA,LUAD,255.9045,0.1921,-91.3442,603.1532,False
+COAD,LUAD,-304.36,0.0963,-649.8505,41.1305,False

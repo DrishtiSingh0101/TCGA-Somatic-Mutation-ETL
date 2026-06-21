@@ -1,0 +1,108 @@
+2026-06-17 11:46:11.901 UTC [8821] LOG:  starting PostgreSQL 18.4 on x86_64-conda-linux-gnu, compiled by x86_64-conda-linux-gnu-cc (conda-forge gcc 14.3.0-19) 14.3.0, 64-bit
+2026-06-17 11:46:11.901 UTC [8821] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2026-06-17 11:46:11.910 UTC [8821] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-06-17 11:46:11.924 UTC [8827] LOG:  database system was shut down at 2026-06-17 11:45:03 UTC
+2026-06-17 11:46:11.931 UTC [8821] LOG:  database system is ready to accept connections
+2026-06-17 11:50:18.567 UTC [9677] ERROR:  syntax error at or near "whoami" at character 1
+2026-06-17 11:50:18.567 UTC [9677] STATEMENT:  whoami
+	create user drishti with password "progresqlPW1";
+2026-06-17 11:50:30.863 UTC [9677] ERROR:  syntax error at or near "whoami" at character 1
+2026-06-17 11:50:30.863 UTC [9677] STATEMENT:  whoami;
+2026-06-17 11:50:54.485 UTC [9677] ERROR:  syntax error at or near "whoami" at character 1
+2026-06-17 11:50:54.485 UTC [9677] STATEMENT:  whoami
+	whoami
+	create user drishti with password "progresqlPW1";
+2026-06-17 11:51:12.023 UTC [8825] LOG:  checkpoint starting: time
+2026-06-17 11:51:33.349 UTC [9677] ERROR:  unrecognized role option "paswword" at character 26
+2026-06-17 11:51:33.349 UTC [9677] STATEMENT:  CREATE USER drishti WITH PASWWORD "progresql1pw";
+2026-06-17 11:51:41.423 UTC [9677] ERROR:  syntax error at or near ""progresql1pw"" at character 35
+2026-06-17 11:51:41.423 UTC [9677] STATEMENT:  CREATE USER drishti WITH PASSWORD "progresql1pw";
+2026-06-17 11:52:43.362 UTC [9677] ERROR:  syntax error at or near "privelages" at character 11
+2026-06-17 11:52:43.362 UTC [9677] STATEMENT:  grant all privelages on cancerdb to drishti;
+2026-06-17 11:52:52.581 UTC [8825] LOG:  checkpoint complete: wrote 994 buffers (6.1%), wrote 3 SLRU buffers; 1 WAL file(s) added, 0 removed, 0 recycled; write=100.240 s, sync=0.241 s, total=100.558 s; sync files=312, longest=0.004 s, average=0.001 s; distance=4734 kB, estimate=4734 kB; lsn=0/1C04510, redo lsn=0/1C03638
+2026-06-17 11:52:57.582 UTC [9677] ERROR:  relation "cancerdb" does not exist
+2026-06-17 11:52:57.582 UTC [9677] STATEMENT:  grant all privileges on cancerdb to drishti;
+2026-06-17 11:53:16.583 UTC [9677] ERROR:  relation "cancerdb" does not exist
+2026-06-17 11:53:16.583 UTC [9677] STATEMENT:  grant all privileges on cancerdb to drishti;
+2026-06-17 11:56:12.682 UTC [8825] LOG:  checkpoint starting: time
+2026-06-17 11:56:13.786 UTC [8825] LOG:  checkpoint complete: wrote 10 buffers (0.1%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=1.038 s, sync=0.047 s, total=1.105 s; sync files=9, longest=0.038 s, average=0.006 s; distance=5 kB, estimate=4261 kB; lsn=0/1C04C78, redo lsn=0/1C04C20
+2026-06-17 12:26:13.286 UTC [8825] LOG:  checkpoint starting: time
+2026-06-17 12:26:13.582 UTC [8825] LOG:  checkpoint complete: wrote 2 buffers (0.0%), wrote 0 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.203 s, sync=0.036 s, total=0.297 s; sync files=1, longest=0.035 s, average=0.035 s; distance=16 kB, estimate=3836 kB; lsn=0/1C08DF0, redo lsn=0/1C08D98
+2026-06-17 12:39:52.725 UTC [26684] ERROR:  permission denied for schema public at character 15
+2026-06-17 12:39:52.725 UTC [26684] STATEMENT:  
+	CREATE TABLE mutations (
+		gene TEXT, 
+		chromosome TEXT, 
+		position BIGINT, 
+		ref TEXT, 
+		alt TEXT, 
+		variant_classification TEXT, 
+		sample_id TEXT, 
+		cancer_type TEXT, 
+		mutation_type TEXT
+	)
+	
+	
+2026-06-17 12:41:13.860 UTC [8825] LOG:  checkpoint starting: time
+2026-06-17 12:41:14.146 UTC [8825] LOG:  checkpoint complete: wrote 2 buffers (0.0%), wrote 0 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.203 s, sync=0.030 s, total=0.287 s; sync files=1, longest=0.030 s, average=0.030 s; distance=16 kB, estimate=3454 kB; lsn=0/1C0CFC8, redo lsn=0/1C0CF70
+2026-06-17 12:51:13.252 UTC [8825] LOG:  checkpoint starting: time
+2026-06-17 12:51:20.645 UTC [8825] LOG:  checkpoint complete: wrote 72 buffers (0.4%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=7.256 s, sync=0.077 s, total=7.393 s; sync files=36, longest=0.033 s, average=0.003 s; distance=465 kB, estimate=3155 kB; lsn=0/1C815E0, redo lsn=0/1C81550
+2026-06-17 12:54:24.198 UTC [31250] FATAL:  database "progresql" does not exist
+2026-06-17 12:56:13.741 UTC [8825] LOG:  checkpoint starting: time
+2026-06-17 12:56:14.640 UTC [8825] LOG:  checkpoint complete: wrote 8 buffers (0.0%), wrote 0 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.806 s, sync=0.037 s, total=0.899 s; sync files=2, longest=0.036 s, average=0.019 s; distance=54 kB, estimate=2845 kB; lsn=0/1C8F170, redo lsn=0/1C8F118
+2026-06-17 16:47:57.320 UTC [8825] LOG:  checkpoint starting: time
+2026-06-17 16:47:57.447 UTC [8825] LOG:  checkpoint complete: wrote 1 buffers (0.0%), wrote 0 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.102 s, sync=0.005 s, total=0.128 s; sync files=1, longest=0.005 s, average=0.005 s; distance=7 kB, estimate=2561 kB; lsn=0/1C90E60, redo lsn=0/1C90E08
+2026-06-18 16:54:23.610 UTC [31312] ERROR:  relation "mutation" does not exist at character 15
+2026-06-18 16:54:23.610 UTC [31312] STATEMENT:  SELECT * FROM mutation;
+2026-06-18 16:54:31.559 UTC [31312] ERROR:  relation "mutation" does not exist at character 15
+2026-06-18 16:54:31.559 UTC [31312] STATEMENT:  SELECT * FROM "mutation";
+2026-06-18 16:56:58.740 UTC [8825] LOG:  checkpoint starting: time
+2026-06-18 16:56:58.909 UTC [8825] LOG:  checkpoint complete: wrote 1 buffers (0.0%), wrote 0 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.111 s, sync=0.006 s, total=0.170 s; sync files=1, longest=0.006 s, average=0.006 s; distance=8 kB, estimate=2306 kB; lsn=0/1C92FF0, redo lsn=0/1C92F98
+2026-06-18 16:58:32.413 UTC [31312] ERROR:  syntax error at or near "(" at character 27
+2026-06-18 16:58:32.413 UTC [31312] STATEMENT:  SELECT "cancer_type" COUNT(*) AS mutation_count FROM mutations GROUP BY "cancer_type" ORDER BY "mutation_count" DESC;
+2026-06-18 16:59:10.849 UTC [31312] ERROR:  syntax error at or near "(" at character 25
+2026-06-18 16:59:10.849 UTC [31312] STATEMENT:  SELECT cancer_type COUNT(*) AS mutation_count FROM mutations GROUP BY cancer_type ORDER BY mutation_count DESC;
+2026-06-18 17:06:55.223 UTC [31312] ERROR:  syntax error at or near "gene" at character 61
+2026-06-18 17:06:55.223 UTC [31312] STATEMENT:  SELECT gene, count(*) as g_mut_count from mutations groupby gene orfer by g_mut_count desc;
+2026-06-18 17:40:28.503 UTC [31312] ERROR:  column "mutations.cancer_type" must appear in the GROUP BY clause or be used in an aggregate function at character 8
+2026-06-18 17:40:28.503 UTC [31312] STATEMENT:  SELECT CANCER_TYPE, MUTATION_TYPE, COUNT(*) AS COUNT FROM MUTATIONS GROUP BY MUTATION_TYPE;
+2026-06-18 17:41:08.937 UTC [31312] ERROR:  syntax error at or near "AS" at character 41
+2026-06-18 17:41:08.937 UTC [31312] STATEMENT:  SELECT CANCER_TYPE, COUNT MUTATION_TYPE AS COUNT FROM MUTATIONS GROUP BY CANCER_TYPE;
+2026-06-18 17:58:36.351 UTC [31312] ERROR:  column "mutations.variant_classification" must appear in the GROUP BY clause or be used in an aggregate function at character 8
+2026-06-18 17:58:36.351 UTC [31312] STATEMENT:  SELECT VARIANT_CLASSIFICATION, COUNT(*) AS COUNT FROM MUTATIONS;
+2026-06-19 06:56:34.690 UTC [174568] ERROR:  aggregate functions are not allowed in GROUP BY at character 33
+2026-06-19 06:56:34.690 UTC [174568] STATEMENT:  
+	SELECT VARIANT_CLASSIFICATION,
+	COUNT(*) AS VAR_CLASS
+	FROM MUTATIONS
+	GROUP BY VAR_CLASS
+	ORDER BY VAR_CLASS DESC;
+	
+2026-06-19 06:57:57.398 UTC [175019] ERROR:  aggregate functions are not allowed in GROUP BY at character 34
+2026-06-19 06:57:57.398 UTC [175019] STATEMENT:  
+	SELECT VARIANT_CLASSIFICATION,
+		COUNT(*) AS VAR_CLASS
+	FROM MUTATIONS
+	GROUP BY VAR_CLASS
+	ORDER BY VAR_CLASS DESC;
+	
+2026-06-19 06:58:06.607 UTC [175080] ERROR:  aggregate functions are not allowed in GROUP BY at character 34
+2026-06-19 06:58:06.607 UTC [175080] STATEMENT:  
+	SELECT VARIANT_CLASSIFICATION,
+		COUNT(*) AS VAR_CLASS
+	FROM MUTATIONS
+	GROUP BY VAR_CLASS
+	ORDER BY VAR_CLASS DESC;
+	
+2026-06-19 12:24:43.797 UTC [8825] LOG:  checkpoint starting: time
+2026-06-19 12:25:54.618 UTC [8825] LOG:  checkpoint complete: wrote 723 buffers (4.4%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=70.681 s, sync=0.065 s, total=70.823 s; sync files=33, longest=0.034 s, average=0.002 s; distance=6895 kB, estimate=6895 kB; lsn=0/234EF00, redo lsn=0/234EE70
+2026-06-19 14:11:38.894 UTC [249620] ERROR:  column "mutations.sample_id" must appear in the GROUP BY clause or be used in an aggregate function at character 22
+2026-06-19 14:11:38.894 UTC [249620] STATEMENT:  
+	SELECT CANCER_TYPE, SAMPLE_ID,
+		COUNT(*) AS SAMPLE_COUNT
+	FROM MUTATIONS
+	GROUP BY CANCER_TYPE
+	ORDER BY SAMPLE_COUNT DESC;
+	
+2026-06-19 14:15:49.747 UTC [8825] LOG:  checkpoint starting: time
+2026-06-19 14:15:49.883 UTC [8825] LOG:  checkpoint complete: wrote 1 buffers (0.0%), wrote 0 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.109 s, sync=0.007 s, total=0.137 s; sync files=1, longest=0.007 s, average=0.007 s; distance=8 kB, estimate=6206 kB; lsn=0/2350FF0, redo lsn=0/2350F98
